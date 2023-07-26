@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -51,7 +52,8 @@ class User extends Authenticatable
     public function comments()
     {
         // TASK: add the code here for two-level relationship
-        return $this->hasMany(Comment::class, 'task_id');
+         return $this->hasMany(Comment::class, 'task_id');
+//        return $this->hasManyThrough(Task::class, Comment::class, 'task_id', 'users_id');
     }
 
     public function projects()
